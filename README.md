@@ -1,4 +1,4 @@
-# Facade pattern and repository com Vue.js
+# Facade pattern e repository com Vue.js
 
 ### Descrição
 Esse projeto é um modelo para separar a camada de repositório e desacoplar o acesso aos dados.

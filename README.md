@@ -2,7 +2,7 @@
 
 ### Descrição
 Esse projeto é um modelo para separar a camada de repositório e desacoplar o acesso aos dados.
-O Facade Patterns está dentro da pasta ```facades``` de ```repositories```.
+O Facade Patterns está dentro da pasta ```facades``` de ```repositories/http```.
 Dessa formar os repositóries de courses e campanhas.
 
 ### Injeção de dependência nos Pages.vue

@@ -5,6 +5,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    company: {
+      id: 1
+    }
+  },
+  getters: {
+    company: state => state.company
   },
   mutations: {
   },

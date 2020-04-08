@@ -28,9 +28,8 @@ export default class CourseRepository {
 
   getAllCourses() {
     const url = `${baseUrl}/${this.path}`
-
-    // return this.http.get(url, this.options)
-    return { url, ...this.options }
+    return this.http.get(url, this.options)
+    // return { url, ...this.options }
   }
 
   getCourseById(id) {
@@ -38,7 +37,13 @@ export default class CourseRepository {
     
     const url = `${baseUrl}/${this.path}/${id}`
 
-    // return this.http.get(url, this.options)
-    return { url, ...this.options }
+    return this.http.get(url, this.options)
+    // return { url, ...this.options }
+  }
+
+  getEmployeeById(id) {
+    const url = `${baseUrl}/employee/${id}`
+
+    return this.http.get(url, this.options)
   }
 }

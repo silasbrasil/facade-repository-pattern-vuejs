@@ -1,10 +1,4 @@
-import {
-  getRequest,
-  postRequest,
-  putRequest,
-  patchRequest,
-  deleteRequest
-} from './facades/http-facade'
+import HttpFacade from './facades/http-facade'
 
 
 class Options {
@@ -22,19 +16,13 @@ function makeOptions(options) {
 export class NiduuHttp {
 
   constructor(urlBuilder, headerBuilder) {
-    this.__urlBuilder__ = function () { return urlBuilder }
-    this.__headerBuilder__ = function () { return headerBuilder }
+    this.urlBuilder = urlBuilder
+    this.headerBuilder = headerBuilder
   }
-
-  get urlBuilder() { return this.__urlBuilder__() }
-  set urlBuilder(_) { throw new Error('Todo urlBuilder property is read only') }
-
-  get headerBuilder() { return this.__headerBuilder__() }
-  set headerBuilder(_) { throw new Error('Todo headerBuilder property is read only') }
 
   async makeHeaders(auth) {
     return auth
-      ? await this.headerBuilder.authorization()
+      ? this.headerBuilder.authorization()
       : this.headerBuilder.build()
   }
 
@@ -43,7 +31,7 @@ export class NiduuHttp {
     const url = this.urlBuilder.build(path, opts.queries)
     const headers = await this.makeHeaders(opts.auth)
 
-    return getRequest(url, headers)
+    return HttpFacade.get(url, headers)
   }
 
   async post(path, body, options) {
@@ -51,7 +39,7 @@ export class NiduuHttp {
     const url = this.urlBuilder.build(path, opts.queries)
     const headers = await this.makeHeaders(opts.auth)
 
-    return postRequest(url, body, headers)
+    return HttpFacade.post(url, body, headers)
   }
 
   async put(path, body, options) {
@@ -59,7 +47,7 @@ export class NiduuHttp {
     const url = this.urlBuilder.build(path, opts.queries)
     const headers = await this.makeHeaders(opts.auth)
 
-    return putRequest(url, body, headers)
+    return HttpFacade.put(url, body, headers)
   }
 
   async patch(path, body, options) {
@@ -67,14 +55,14 @@ export class NiduuHttp {
     const url = this.urlBuilder.build(path, opts.queries)
     const headers = await this.makeHeaders(opts.auth)
 
-    return patchRequest(url, body, headers)
+    return HttpFacade.patch(url, body, headers)
   }
 
   async delete(path, options) {
     const opts = makeOptions(options)
     const url = this.urlBuilder.build(path, opts.queries)
-    const headers = await makeHeaders(opts.auth)
+    const headers = await this.makeHeaders(opts.auth)
 
-    return deleteRequest(url, body, headers)
+    return HttpFacade.delete(url, body, headers)
   }
 }

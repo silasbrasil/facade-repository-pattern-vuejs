@@ -1,8 +1,13 @@
-import { NiduuHttp } from '@/repositories/niduu-http'
+import { NiduuHttp } from '@/repositories/http/http'
+import { UrlBuilder } from '@/repositories/http/helpers/url-builder'
+import { HeaderBuilder } from '@/repositories/http/helpers/header-builder'
 
 describe('NiduuHttp Tests', () => {
   const url = 'http://dummy.restapiexample.com/api/v1/employees'
-  const http = new NiduuHttp()
+  const http = new NiduuHttp(
+    UrlBuilder,
+    HeaderBuilder
+  )
 
   it('Niduu Http simple Get', async () => {
     const result = await http.get(url)

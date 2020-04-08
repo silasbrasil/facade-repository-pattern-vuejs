@@ -9,6 +9,7 @@ export default {
       return repository.getAllCourses()
     },
     $getCourse() {
+      // console.log(this.$route)
       // const id = this.$route.params.courseId
       const id = 1
       const company = this.$store.getters.company

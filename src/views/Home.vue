@@ -7,17 +7,19 @@
 
 <script>
 // @ is an alias to /src
-import serviceMixin from './service-mixin'
+import diMixin from './di-mixin'
 import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'Home',
-  mixins: [serviceMixin],
+  mixins: [diMixin],
   components: {
     HelloWorld
   },
   async created() {
     // const result = await this.$getAllCourse()
+    // const course = new CourseRepository()
+    // const result = await course.getAllCourses()
     const result = await this.$getCourse()
     console.log(result)
   }

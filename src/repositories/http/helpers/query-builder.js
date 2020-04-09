@@ -1,5 +1,5 @@
 
-export class QueryBuilder {
+export default class QueryBuilder {
   static stringfy(queries) {
     console.log('Queries >>> ', queries)
 

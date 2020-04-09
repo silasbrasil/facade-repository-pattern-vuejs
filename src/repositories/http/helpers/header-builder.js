@@ -1,4 +1,4 @@
-export class HeaderBuilder {
+export default class HeaderBuilder {
   static build() {
     const headers = {
       'Accept-Language': 'pt-Br',

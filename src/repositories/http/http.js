@@ -13,7 +13,7 @@ function makeOptions(options) {
   else return new Options()
 }
 
-export class NiduuHttp {
+export default class NiduuHttp {
 
   constructor(urlBuilder, headerBuilder) {
     this.urlBuilder = urlBuilder
@@ -30,6 +30,10 @@ export class NiduuHttp {
     const opts = makeOptions(options)
     const url = this.urlBuilder.build(path, opts.queries)
     const headers = await this.makeHeaders(opts.auth)
+
+    console.log(opts)
+    console.log(url)
+    console.log(headers)
 
     return HttpFacade.get(url, headers)
   }

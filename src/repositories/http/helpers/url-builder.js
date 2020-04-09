@@ -1,6 +1,6 @@
-import { QueryBuilder } from './query-builder'
+import QueryBuilder from './query-builder'
 
-export class UrlBuilder {
+export default class UrlBuilder {
   static build(path, queries = {}) {
     const queryString = QueryBuilder.stringfy(queries)
     const url = queryString
